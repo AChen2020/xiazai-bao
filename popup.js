@@ -29,6 +29,13 @@ const findLinks = () => {
     selectedLinks.innerHTML = extractedLinks;
     
     document.body.appendChild(selectedLinks);
+
+    let range = document.createRange();
+    range.selectNode(selectedLinks);
+    window.getSelection().addRange(range);
+    let copyResult = document.execCommand("copy");
+    console.log("Links were copied:" + copyResult);
+    
 }
 
 //document.getElementById("links").innerHTML = extractedLinks;
