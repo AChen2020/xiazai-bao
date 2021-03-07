@@ -12,7 +12,7 @@ const saveAsCSV = (value) => {
     return [];
 }
 
-const handleButtonClick = (event) => {
+const handleSavweButtonClick = (event) => {
     const config = {"hrefConfig": 
         {
             "startWith": saveAsCSV(document.getElementById("txtStartWith").value), 
@@ -26,6 +26,11 @@ const handleButtonClick = (event) => {
         document.getElementById("message").innerHTML = "Saved";
     });
 
+}
+
+const handleRestoreButtonClick = (event) => {
+    document.getElementById("txtStartWith").value = defaultConfig.startWith;
+    document.getElementById("txtEndWith").value = defaultConfig.endWith;
 }
 
 chrome.storage.sync.get(['hrefConfig'], (config) => {
@@ -43,4 +48,6 @@ chrome.storage.sync.get(['hrefConfig'], (config) => {
     }
 })
 
-document.getElementById("btnSave").addEventListener("click", handleButtonClick);
+document.getElementById("btnSave").addEventListener("click", handleSavweButtonClick);
+
+document.getElementById("btnRestore").addEventListener("click", handleRestoreButtonClick);
