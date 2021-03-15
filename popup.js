@@ -43,32 +43,45 @@ const findLinks = () => {
         if (extractedLinks === "") {                                    
             extractedLinks = "No links";
         }
+
+        let container = document.createElement("div");
+        let btnClose = document.createElement("button");
+        btnClose.innerText = "Close";
+        btnClose.onclick = () => {
+            container.remove();
+        }
+
     
         let selectedLinks = document.createElement("div");
+
+        container.appendChild(btnClose);
+        container.appendChild(selectedLinks);
         
-        selectedLinks.style.width = "600px";
-        selectedLinks.style.height = "300px";
-        selectedLinks.style.position = "fixed";
-        selectedLinks.style.top = "100px";
-        selectedLinks.style.left = "200px";
-        selectedLinks.style.background = "black";
-        selectedLinks.style.color = "white";
-        selectedLinks.style.overflowY = "scroll";
+        container.style.width = "600px";
+        container.style.height = "300px";
+        container.style.position = "fixed";
+        container.style.top = "100px";
+        container.style.left = "200px";
+        container.style.background = "black";
+        container.style.color = "white";
+        container.style.overflowY = "scroll";
     
         selectedLinks.innerHTML = extractedLinks;
         
-        document.body.appendChild(selectedLinks);
+        document.body.appendChild(container);
     
         let range = document.createRange();
         range.selectNode(selectedLinks);
         window.getSelection().addRange(range);
         let copyResult = document.execCommand("copy");
         console.log("Links were copied:" + copyResult);
+
+        setTimeout(() => {
+            container.remove();
+        }, 300000);
     })
     
 }
-
-//document.getElementById("links").innerHTML = extractedLinks;
 
 
 chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {

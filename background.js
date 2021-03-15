@@ -4,7 +4,7 @@ chrome.runtime.onInstalled.addListener(() =>{
 
     chrome.contextMenus.create({
         "id": "delete",
-        "title": "Delete",
+        "title": "XiaZai-Bao: Delete selected element",
         "type": 'normal',
         "contexts": ['all']
     });
