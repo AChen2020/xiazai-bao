@@ -46,6 +46,9 @@ const findLinks = () => {
 
         let container = document.createElement("div");
         let btnClose = document.createElement("button");
+        btnClose.style.color = "#ff0000";
+        btnClose.style.borderColor = "#e56a2e";
+        btnClose.style.margin = "10px";
         btnClose.innerText = "Close";
         btnClose.onclick = () => {
             container.remove();

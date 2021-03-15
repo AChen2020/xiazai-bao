@@ -1,6 +1,6 @@
 {
     "name": "XiaZai-Bao",
-    "description": "XiaZai",
+    "description": "Toolbox for extracting links, deleting ads...",
     "version": "1.0",
     "manifest_version": 3,
     "action": {
